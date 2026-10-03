@@ -9,7 +9,7 @@ export const profesoresData = [
     nombre: 'Noe',
     nombreCompleto: 'Noelia',
     roles: ['Profesora Universitaria de Educación Física', 'Personal Trainer'],
-    foto: '/img/noe.jpg',
+    foto: 'img/noe.jpg', // ruta relativa a /public
     trayectoria: {
       titulo: 'Formación profesional al servicio de tu entrenamiento',
       parrafos: [

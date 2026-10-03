@@ -3,17 +3,18 @@
  * Invita a seguir a Vida Fitness en Instagram.
  */
 import { Icon } from '../Icon.jsx';
+import { asset } from '../../utils/asset.js';
 import { Reveal } from '../Reveal.jsx';
 import './Community.css';
 
 /** Mosaico estilo feed; `pos` = object-position para centrar a la persona en el recorte cuadrado */
 const FOTOS = [
-  { src: '/img/hero-poster.jpg', alt: 'Entrenamiento con battle ropes', pos: '30% center' },
-  { src: '/img/kettlebell.jpg', alt: 'Swing con kettlebell', pos: '58% center' },
-  { src: '/img/trineo.jpg', alt: 'Empuje de trineo con discos', pos: '45% center' },
-  { src: '/img/trx.jpg', alt: 'Remo con bandas de suspensión', pos: '50% center' },
-  { src: '/img/noe.jpg', alt: 'Profe Noe', pos: 'center 30%' },
-  { src: '/img/wallball.jpg', alt: 'Lanzamiento de balón medicinal', pos: '40% center' },
+  { src: asset('img/hero-poster.jpg'), alt: 'Entrenamiento con battle ropes', pos: '30% center' },
+  { src: asset('img/kettlebell.jpg'), alt: 'Swing con kettlebell', pos: '58% center' },
+  { src: asset('img/trineo.jpg'), alt: 'Empuje de trineo con discos', pos: '45% center' },
+  { src: asset('img/trx.jpg'), alt: 'Remo con bandas de suspensión', pos: '50% center' },
+  { src: asset('img/noe.jpg'), alt: 'Profe Noe', pos: 'center 30%' },
+  { src: asset('img/wallball.jpg'), alt: 'Lanzamiento de balón medicinal', pos: '40% center' },
 ];
 
 const PILARES = ['Rutinas y tips', 'Novedades y horarios', 'La energía de cada clase'];

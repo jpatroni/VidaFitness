@@ -4,7 +4,12 @@ import { defineConfig } from 'vite';
 
 const src = (dir) => fileURLToPath(new URL(`./src/${dir}`, import.meta.url));
 
-export default defineConfig({
+// En GitHub Pages el sitio vive en https://<usuario>.github.io/VidaFitness/
+// En desarrollo se sirve desde la raíz. Se puede sobrescribir con BASE_PATH.
+const BASE_PRODUCCION = process.env.BASE_PATH ?? '/VidaFitness/';
+
+export default defineConfig(({ command }) => ({
+  base: command === 'build' ? BASE_PRODUCCION : '/',
   plugins: [react()],
   resolve: {
     // Un alias por capa: los imports entre capas quedan explícitos
@@ -16,4 +21,4 @@ export default defineConfig({
       '@presentation': src('presentation'),
     },
   },
-});
+}));

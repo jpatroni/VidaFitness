@@ -4,6 +4,7 @@
 import { useEffect, useState } from 'react';
 import { useBodyScrollLock, useScrolled } from '../../hooks/dom.js';
 import { Icon } from '../Icon.jsx';
+import { asset } from '../../utils/asset.js';
 import './Navbar.css';
 
 const LINKS = [
@@ -33,7 +34,7 @@ export function Navbar({ gym, reservaUrl }) {
     <header className={className}>
       <nav className="navbar__inner container" aria-label="Principal">
         <a className="navbar__brand" href="#inicio" aria-label={`${gym.nombre} – inicio`}>
-          <img src="/img/logo.png" alt={gym.nombre} width="132" height="80" />
+          <img src={asset('img/logo.png')} alt={gym.nombre} width="132" height="80" />
         </a>
 
         <ul className="navbar__links" id="navbar-menu">

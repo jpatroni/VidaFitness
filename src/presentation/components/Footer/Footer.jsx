@@ -2,13 +2,14 @@
  * CAPA DE PRESENTACIÓN · Footer
  */
 import { Icon } from '../Icon.jsx';
+import { asset } from '../../utils/asset.js';
 import './Footer.css';
 
 export function Footer({ gym, instagramUrl }) {
   return (
     <footer className="footer">
       <div className="container footer__inner">
-        <img className="footer__logo" src="/img/logo.png" alt={gym.nombre} width="160" height="97" loading="lazy" />
+        <img className="footer__logo" src={asset('img/logo.png')} alt={gym.nombre} width="160" height="97" loading="lazy" />
 
         <div className="footer__info">
           <p>

@@ -13,6 +13,15 @@ npm run build     # genera /dist para subir a cualquier hosting estático
 npm run preview   # sirve /dist localmente
 ```
 
+## Despliegue
+
+Se publica en **GitHub Pages** automáticamente con cada push a `main` (`.github/workflows/deploy.yml`):
+compila con `npm run build` y sube `dist/`.
+
+- Sitio: https://jpatroni.github.io/VidaFitness/
+- El sitio vive en la subcarpeta `/VidaFitness/` (`base` en `vite.config.js`). Para otro hosting en la raíz, compilar con `BASE_PATH=/ npm run build`.
+- Las rutas a archivos de `public/` desde JSX usan `asset('img/...')` (`presentation/utils/asset.js`) para respetar esa base.
+
 ## Arquitectura en capas
 
 ```

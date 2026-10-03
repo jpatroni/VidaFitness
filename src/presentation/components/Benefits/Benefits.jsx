@@ -2,6 +2,7 @@
  * CAPA DE PRESENTACIÓN · Beneficios del entrenamiento funcional
  */
 import { Icon } from '../Icon.jsx';
+import { asset } from '../../utils/asset.js';
 import { Reveal } from '../Reveal.jsx';
 import './Benefits.css';
 
@@ -13,10 +14,10 @@ export function Benefits({ programa }) {
     <section className="section benefits" aria-labelledby="benefits-title">
       <div className="container benefits__inner">
         <Reveal as="figure" className="benefits__media">
-          <img src="/img/trx.jpg" alt="Entrenamiento con bandas de suspensión (TRX)" loading="lazy" />
+          <img src={asset('img/trx.jpg')} alt="Entrenamiento con bandas de suspensión (TRX)" loading="lazy" />
           <img
             className="benefits__media-sm"
-            src="/img/wallball.jpg"
+            src={asset('img/wallball.jpg')}
             alt="Lanzamiento de balón medicinal contra la pared"
             loading="lazy"
           />

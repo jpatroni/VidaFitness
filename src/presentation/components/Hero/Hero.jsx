@@ -4,6 +4,7 @@
 import { useEffect, useRef } from 'react';
 import { useInView, useReducedMotion } from '../../hooks/dom.js';
 import { Icon } from '../Icon.jsx';
+import { asset } from '../../utils/asset.js';
 import './Hero.css';
 
 /** Reproduce el video sólo si está en pantalla y no se pidió reducir movimiento */
@@ -36,9 +37,9 @@ export function Hero({ gym, reservaUrl }) {
           loop
           playsInline
           preload="auto"
-          poster="/img/hero-poster.jpg"
+          poster={asset('img/hero-poster.jpg')}
         >
-          <source src="/media/hero.mp4" type="video/mp4" />
+          <source src={asset('media/hero.mp4')} type="video/mp4" />
         </video>
         <div className="hero__overlay" />
       </div>

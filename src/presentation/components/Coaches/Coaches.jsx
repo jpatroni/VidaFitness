@@ -4,6 +4,7 @@
  * el resto, como tarjetas.
  */
 import { Icon } from '../Icon.jsx';
+import { asset } from '../../utils/asset.js';
 import { Reveal } from '../Reveal.jsx';
 import './Coaches.css';
 
@@ -27,7 +28,7 @@ function Spotlight({ profesor, programas, reservaUrl, canal }) {
     <article className="spotlight" aria-labelledby={headingId}>
       <Reveal as="figure" className="spotlight__media">
         <img
-          src={profesor.foto}
+          src={asset(profesor.foto)}
           alt={`${profesor.nombreCompleto}, ${profesor.roles.join(' y ')}`}
           width="900"
           height="1200"
@@ -79,7 +80,7 @@ function CoachCard({ profesor, programas, delay }) {
   return (
     <Reveal as="li" className="coach-card" delay={delay}>
       {profesor.foto ? (
-        <img className="coach-card__avatar coach-card__avatar--photo" src={profesor.foto} alt="" loading="lazy" />
+        <img className="coach-card__avatar coach-card__avatar--photo" src={asset(profesor.foto)} alt="" loading="lazy" />
       ) : (
         <div className="coach-card__avatar" aria-hidden="true">
           {profesor.nombre.charAt(0)}
