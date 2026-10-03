@@ -51,12 +51,29 @@
   margin: 0;
 }
 
-.footer__copy {
-  margin: 0;
+.footer__bottom {
+  display: grid;
+  gap: 0.35rem;
   /* espacio extra abajo para que el botón flotante de WhatsApp no tape el texto */
   padding: 1.25rem var(--gutter) 6rem;
   text-align: center;
   font-size: 0.75rem;
   color: var(--color-text-dim);
   border-top: 1px solid var(--color-border);
+}
+
+.footer__copy,
+.footer__credit {
+  margin: 0;
+}
+
+.footer__credit {
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 0.7rem;
+}
+
+.footer__credit strong {
+  color: var(--color-orange);
+  font-weight: 700;
 }

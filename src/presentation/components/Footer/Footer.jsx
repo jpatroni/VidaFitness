@@ -24,9 +24,14 @@ export function Footer({ gym, instagramUrl }) {
           {gym.lema} <span aria-hidden="true">🧡</span>
         </p>
       </div>
-      <p className="footer__copy">
-        © {new Date().getFullYear()} {gym.nombre}. Todos los derechos reservados.
-      </p>
+      <div className="footer__bottom">
+        <p className="footer__copy">
+          © {new Date().getFullYear()} {gym.nombre}. Todos los derechos reservados.
+        </p>
+        <p className="footer__credit">
+          Powered by <strong>JMP Corp</strong>
+        </p>
+      </div>
     </footer>
   );
 }
