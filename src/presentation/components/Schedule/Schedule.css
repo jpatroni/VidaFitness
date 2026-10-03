@@ -1,0 +1,242 @@
+.schedule {
+  background:
+    radial-gradient(50% 40% at 0% 100%, rgba(226, 121, 62, 0.08), transparent 70%),
+    var(--color-bg);
+}
+
+.schedule__header {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 1.5rem 2rem;
+  margin-bottom: 2.5rem;
+}
+
+/* --- Chips de filtro --- */
+.schedule__filters {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.chip {
+  --prog-color: var(--color-orange);
+  min-height: 44px;
+  padding: 0.5rem 1.1rem;
+  border-radius: 999px;
+  border: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-text-muted);
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  transition:
+    background 0.2s,
+    color 0.2s,
+    border-color 0.2s;
+}
+
+.chip:hover {
+  color: var(--color-text);
+  border-color: var(--prog-color);
+}
+
+.chip.is-active {
+  background: var(--prog-color);
+  border-color: var(--prog-color);
+  color: #120a05;
+}
+
+/* --- Grilla --- */
+.schedule__grid {
+  display: grid;
+  grid-template-columns: 112px repeat(5, minmax(0, 1fr));
+  border: 1px solid var(--color-border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+}
+
+.schedule__corner,
+.schedule__day {
+  background: linear-gradient(135deg, var(--color-orange), var(--color-orange-deep));
+}
+
+.schedule__day {
+  padding: 0.8rem 0.5rem;
+  text-align: center;
+  font-family: var(--font-display);
+  font-size: 1.35rem;
+  letter-spacing: 0.06em;
+  color: #fff;
+}
+
+.schedule__turno {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 0.4rem;
+  padding: 1rem 0.5rem;
+  border-top: 1px solid var(--color-border);
+  color: var(--color-orange-bright);
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  letter-spacing: 0.08em;
+  background: var(--color-surface-2);
+}
+
+.schedule__turno span {
+  color: var(--color-text);
+}
+
+.schedule__cell {
+  list-style: none;
+  margin: 0;
+  padding: 0.6rem;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  border-top: 1px solid var(--color-border);
+  border-left: 1px solid var(--color-border);
+  min-height: 92px;
+}
+
+.schedule__item {
+  width: 100%;
+  display: grid;
+  gap: 0.1rem;
+  text-align: left;
+  padding: 0.6rem 0.75rem;
+  border-radius: var(--radius-sm);
+  border-left: 3px solid var(--prog-color);
+  background: color-mix(in srgb, var(--prog-color) 10%, var(--color-surface-2));
+  transition:
+    transform 0.2s var(--ease-out),
+    background 0.2s,
+    opacity 0.25s,
+    filter 0.25s;
+}
+
+.schedule__item:hover {
+  transform: translateY(-2px);
+  background: color-mix(in srgb, var(--prog-color) 22%, var(--color-surface-2));
+}
+
+.schedule__item.is-dimmed {
+  opacity: 0.18;
+  filter: grayscale(1);
+}
+
+.schedule__item-hora {
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  line-height: 1;
+  letter-spacing: 0.04em;
+  color: var(--prog-color);
+}
+
+.schedule__item-nombre {
+  font-size: 0.74rem;
+  font-weight: 700;
+  line-height: 1.25;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+}
+
+.schedule__item-profe {
+  font-size: 0.75rem;
+  color: var(--color-text-dim);
+  font-weight: 600;
+}
+
+.schedule__note {
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+  margin: 1.5rem 0 0;
+  color: var(--color-text-muted);
+  font-size: 0.9rem;
+}
+
+.schedule__note svg {
+  color: var(--color-orange);
+  flex: none;
+}
+
+/* --- Pestañas (sólo mobile) --- */
+.schedule__tabs {
+  display: none;
+}
+
+@media (max-width: 860px) {
+  .schedule__tabs {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 0.35rem;
+    margin-bottom: 1rem;
+  }
+
+  .schedule__tab {
+    min-height: 48px;
+    padding: 0.75rem 0;
+    border-radius: var(--radius-sm);
+    background: var(--color-surface);
+    border: 1px solid var(--color-border);
+    font-family: var(--font-display);
+    font-size: 1.25rem;
+    letter-spacing: 0.06em;
+    color: var(--color-text-muted);
+  }
+
+  .schedule__tab[aria-selected='true'] {
+    background: linear-gradient(135deg, var(--color-orange), var(--color-orange-deep));
+    border-color: transparent;
+    color: #fff;
+  }
+
+  .schedule__grid {
+    grid-template-columns: 84px 1fr;
+  }
+
+  .schedule__corner,
+  .schedule__day {
+    display: none;
+  }
+
+  /* Sólo se ve la columna del día activo */
+  .schedule__cell {
+    display: none;
+  }
+
+  .schedule__grid[data-active-dia='lunes'] .schedule__cell[data-dia='lunes'],
+  .schedule__grid[data-active-dia='martes'] .schedule__cell[data-dia='martes'],
+  .schedule__grid[data-active-dia='miercoles'] .schedule__cell[data-dia='miercoles'],
+  .schedule__grid[data-active-dia='jueves'] .schedule__cell[data-dia='jueves'],
+  .schedule__grid[data-active-dia='viernes'] .schedule__cell[data-dia='viernes'] {
+    display: flex;
+  }
+
+  .schedule__turno {
+    font-size: 1rem;
+  }
+
+  .schedule__cell:empty::after {
+    content: 'Sin clases';
+    margin: auto 0;
+    color: var(--color-text-dim);
+    font-size: 0.8rem;
+  }
+
+  .schedule__item {
+    grid-template-columns: auto 1fr;
+    column-gap: 0.9rem;
+    align-items: center;
+  }
+
+  .schedule__item-hora {
+    grid-row: span 2;
+  }
+}

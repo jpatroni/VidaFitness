@@ -1,0 +1,41 @@
+/* Paleta y tipografía tomadas del logo y las piezas de Instagram:
+   negro profundo + naranja "Vida" + acentos cálidos tipo brasa. */
+:root {
+  --color-bg: #0a0a0a;
+  --color-bg-warm: #140d09;
+  --color-surface: #161412;
+  --color-surface-2: #1f1b18;
+  --color-border: rgba(255, 255, 255, 0.08);
+
+  --color-orange: #e2793e;
+  --color-orange-bright: #f59a4a;
+  --color-orange-deep: #b8551f;
+  --color-ember: #ff7a1a;
+  --color-orange-soft: rgba(226, 121, 62, 0.14);
+
+  --color-text: #f5f1ec;
+  --color-text-muted: #b5aca3;
+  --color-text-dim: #7d756e;
+
+  /* Colores por disciplina (calendario) */
+  --prog-funcional: #e2793e;
+  --prog-personalizado: #f2b04a;
+  --prog-running: #7fa7d9;
+  --prog-pilates: #9fc6b8;
+
+  --font-display: 'Bebas Neue', 'Oswald', Impact, sans-serif;
+  --font-script: 'Kaushan Script', cursive;
+  --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+
+  --radius-sm: 8px;
+  --radius-md: 14px;
+  --radius-lg: 22px;
+
+  --container: 1180px;
+  --gutter: clamp(16px, 4vw, 32px);
+  --section-y: clamp(72px, 10vw, 128px);
+  --nav-h: 72px;
+
+  --shadow-glow: 0 10px 40px -10px rgba(226, 121, 62, 0.55);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}

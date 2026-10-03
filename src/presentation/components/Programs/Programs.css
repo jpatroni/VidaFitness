@@ -1,0 +1,110 @@
+.programs {
+  background:
+    radial-gradient(60% 50% at 100% 0%, rgba(226, 121, 62, 0.1), transparent 70%),
+    var(--color-bg);
+}
+
+.programs__header {
+  margin-bottom: 3rem;
+}
+
+.programs__grid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.25rem;
+}
+
+.program-card {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 2rem 1.6rem 1.6rem;
+  border-radius: var(--radius-lg);
+  background: linear-gradient(180deg, var(--color-surface-2), var(--color-surface));
+  border: 1px solid var(--color-border);
+  overflow: hidden;
+  transition:
+    transform 0.35s var(--ease-out),
+    border-color 0.35s,
+    opacity 0.8s var(--ease-out);
+}
+
+.program-card::before {
+  content: '';
+  position: absolute;
+  inset: 0 0 auto;
+  height: 3px;
+  background: var(--prog-color);
+}
+
+.program-card:hover {
+  transform: translateY(-6px);
+  border-color: color-mix(in srgb, var(--prog-color) 50%, transparent);
+}
+
+.program-card__icon {
+  display: inline-grid;
+  place-items: center;
+  width: 58px;
+  height: 58px;
+  border-radius: 16px;
+  color: var(--prog-color);
+  background: color-mix(in srgb, var(--prog-color) 14%, transparent);
+  margin-bottom: 1.4rem;
+}
+
+.program-card__modalidad {
+  margin: 0;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--prog-color);
+}
+
+.program-card__title {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-size: 2rem;
+  line-height: 1;
+  letter-spacing: 0.02em;
+  margin: 0.4rem 0 0.8rem;
+}
+
+.program-card__desc {
+  color: var(--color-text-muted);
+  font-size: 0.92rem;
+  margin: 0 0 1.2rem;
+}
+
+.program-card__profe {
+  margin: auto 0 1rem;
+  font-size: 0.8rem;
+  font-weight: 600;
+  color: var(--color-text-dim);
+}
+
+.program-card__link {
+  display: inline-flex;
+  min-height: 44px;
+  align-self: flex-start;
+  align-items: center;
+  gap: 0.4rem;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-text);
+}
+
+.program-card__link svg {
+  transition: transform 0.25s var(--ease-out);
+  color: var(--prog-color);
+}
+
+.program-card__link:hover svg {
+  transform: translateX(4px);
+}
