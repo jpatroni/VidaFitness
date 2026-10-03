@@ -85,6 +85,7 @@ presentation ──► application ──► domain ◄── data
 | Agregar/editar disciplina | `src/data/sources/programas.data.js` (+ color en `styles/tokens.css` → `--prog-<id>`) |
 | Cambiar profes / trayectoria | `src/data/sources/profesores.data.js` (con `trayectoria` el profe sale destacado) |
 | Cambiar WhatsApp o Instagram | `src/data/sources/gym.data.js` |
+| Cambiar el crédito del pie (Powered by) | `src/data/sources/credito.data.js` |
 | Cambiar colores/tipografías | `src/presentation/styles/tokens.css` |
 | Cambiar el video | `public/media/hero.mp4` (+ `public/img/hero-poster.jpg`) |
 | Cambiar fotos de la comunidad | `FOTOS` en `src/presentation/components/Community/Community.jsx` |

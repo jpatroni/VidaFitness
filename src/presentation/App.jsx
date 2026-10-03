@@ -74,7 +74,7 @@ export function App() {
         <Community gym={gym} instagramUrl={contactService.getInstagramUrl()} />
         <CtaBanner gym={gym} reservaUrl={reservaUrl} canal={canal} />
       </main>
-      <Footer gym={gym} instagramUrl={contactService.getInstagramUrl()} />
+      <Footer gym={gym} instagramUrl={contactService.getInstagramUrl()} credito={contactService.getCredito()} />
       {canal === 'whatsapp' && <WhatsAppFab url={reservaUrl} />}
     </>
   );

@@ -5,7 +5,10 @@ import { Icon } from '../Icon.jsx';
 import { asset } from '../../utils/asset.js';
 import './Footer.css';
 
-export function Footer({ gym, instagramUrl }) {
+/**
+ * @param {{ gym, instagramUrl: string, credito: { nombre: string, url: string | null } | null }} props
+ */
+export function Footer({ gym, instagramUrl, credito }) {
   return (
     <footer className="footer">
       <div className="container footer__inner">
@@ -28,9 +31,25 @@ export function Footer({ gym, instagramUrl }) {
         <p className="footer__copy">
           © {new Date().getFullYear()} {gym.nombre}. Todos los derechos reservados.
         </p>
-        <p className="footer__credit">
-          Powered by <strong>JMP Corp</strong>
-        </p>
+        {credito && (
+          <p className="footer__credit">
+            Powered by{' '}
+            {credito.url ? (
+              <a
+                className="footer__credit-link"
+                href={credito.url}
+                target="_blank"
+                rel="noopener"
+                aria-label={`${credito.nombre}: consultá por WhatsApp por el desarrollo de tu landing page`}
+                title="¿Querés tu landing page? Escribinos por WhatsApp"
+              >
+                {credito.nombre}
+              </a>
+            ) : (
+              <strong>{credito.nombre}</strong>
+            )}
+          </p>
+        )}
       </div>
     </footer>
   );

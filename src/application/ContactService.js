@@ -9,13 +9,24 @@
  */
 import { DIAS } from '@domain/constants.js';
 
+const whatsappUrl = (numero, mensaje) => `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+
 export class ContactService {
-  static async create({ gymRepository }) {
-    return new ContactService(await gymRepository.get());
+  static async create({ gymRepository, creditoRepository }) {
+    const [gym, credito] = await Promise.all([gymRepository.get(), creditoRepository?.get() ?? null]);
+    return new ContactService(gym, credito);
   }
 
-  constructor(gym) {
+  constructor(gym, credito = null) {
     this.gym = gym;
+    this.credito = credito;
+  }
+
+  /** Crédito del desarrollo del sitio, con link a su WhatsApp (o null si no hay) */
+  getCredito() {
+    if (!this.credito) return null;
+    const { nombre, whatsapp, mensaje } = this.credito;
+    return { nombre, url: whatsapp ? whatsappUrl(whatsapp, mensaje) : null };
   }
 
   get canal() {
@@ -44,7 +55,6 @@ export class ContactService {
       const dia = DIAS.find((d) => d.id === clase.dia).label.toLowerCase();
       mensaje += ` el ${dia} a las ${clase.horaLabel}`;
     }
-    const texto = encodeURIComponent(mensaje + '.');
-    return `https://wa.me/${this.gym.whatsapp}?text=${texto}`;
+    return whatsappUrl(this.gym.whatsapp, mensaje + '.');
   }
 }

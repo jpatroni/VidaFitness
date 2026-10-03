@@ -12,6 +12,7 @@ import { ContactService } from '@application/ContactService.js';
 import { ScheduleService } from '@application/ScheduleService.js';
 import {
   StaticClaseRepository,
+  StaticCreditoRepository,
   StaticGymRepository,
   StaticProfesorRepository,
   StaticProgramaRepository,
@@ -21,6 +22,7 @@ import { ServicesProvider } from '@presentation/context/ServicesContext.jsx';
 
 // --- Capa de datos ---
 const gymRepository = new StaticGymRepository();
+const creditoRepository = new StaticCreditoRepository();
 const profesorRepository = new StaticProfesorRepository();
 const programaRepository = new StaticProgramaRepository();
 const claseRepository = new StaticClaseRepository();
@@ -33,7 +35,7 @@ const scheduleService = new ScheduleService({ claseRepository, programaRepositor
 async function bootstrap() {
   const [gym, contactService] = await Promise.all([
     gymRepository.get(),
-    ContactService.create({ gymRepository }),
+    ContactService.create({ gymRepository, creditoRepository }),
   ]);
   const services = { gym, catalogService, scheduleService, contactService };
 

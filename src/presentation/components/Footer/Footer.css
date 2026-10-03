@@ -73,7 +73,27 @@
   font-size: 0.7rem;
 }
 
-.footer__credit strong {
+.footer__credit strong,
+.footer__credit-link {
   color: var(--color-orange);
   font-weight: 700;
+}
+
+.footer__credit-link {
+  /* zona táctil cómoda sin agrandar el texto */
+  display: inline-block;
+  padding: 0.75rem 0.25rem;
+  margin: -0.75rem -0.25rem;
+  text-decoration: underline;
+  text-decoration-color: transparent;
+  text-underline-offset: 3px;
+  transition:
+    color 0.2s,
+    text-decoration-color 0.2s;
+}
+
+.footer__credit-link:hover,
+.footer__credit-link:focus-visible {
+  color: var(--color-orange-bright);
+  text-decoration-color: currentColor;
 }
