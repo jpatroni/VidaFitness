@@ -34,6 +34,8 @@
   position: relative;
   z-index: 1;
   width: 100%;
+  /* sin esto el atributo height del <img> le gana a aspect-ratio */
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: center 30%;
@@ -243,6 +245,7 @@
 
 .coach-card__media img {
   width: 100%;
+  height: auto;
   aspect-ratio: 3 / 4;
   object-fit: cover;
   object-position: 55% 30%;
