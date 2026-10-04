@@ -94,8 +94,8 @@ function CoachCard({ profesor, programas, reservaUrl, canal, delay }) {
           <img
             src={asset(profesor.foto)}
             alt={`${profesor.titulo}, ${profesor.roles.join(', ')}`}
-            width="600"
-            height="800"
+            width="840"
+            height="1120"
             loading="lazy"
           />
           {profesor.especialidad && (
