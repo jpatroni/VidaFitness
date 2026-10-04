@@ -13,6 +13,7 @@ import { Coaches } from './components/Coaches/Coaches.jsx';
 import { Community } from './components/Community/Community.jsx';
 import { CtaBanner } from './components/CtaBanner/CtaBanner.jsx';
 import { Footer } from './components/Footer/Footer.jsx';
+import { Gallery } from './components/Gallery/Gallery.jsx';
 import { Hero } from './components/Hero/Hero.jsx';
 import { Navbar } from './components/Navbar/Navbar.jsx';
 import { Programs } from './components/Programs/Programs.jsx';
@@ -54,16 +55,17 @@ export function App() {
   }
   if (status === 'loading') return null;
 
-  const { programas, profesores, programasPorProfesor, grilla } = data;
+  const { programas, profesores, programasPorProfesor, grilla, medios } = data;
   const funcional = programas.find(({ programa }) => programa.id === 'funcional')?.programa;
 
   return (
     <>
       <Navbar gym={gym} reservaUrl={reservaUrl} />
       <main>
-        <Hero gym={gym} reservaUrl={reservaUrl} />
+        <Hero gym={gym} reservaUrl={reservaUrl} video={medios.hero[0]} />
         <Programs items={programas} onVerHorarios={setFiltro} />
-        <Benefits programa={funcional} />
+        <Benefits programa={funcional} medios={medios.beneficios} />
+        <Gallery medios={medios.espacio} />
         <Schedule grilla={grilla} filtro={filtro} onFiltroChange={setFiltro} onReservar={reservarClase} />
         <Coaches
           profesores={profesores}
@@ -71,7 +73,7 @@ export function App() {
           reservaUrlPorProfesor={reservaUrlPorProfesor}
           canal={canal}
         />
-        <Community gym={gym} instagramUrl={contactService.getInstagramUrl()} />
+        <Community gym={gym} instagramUrl={contactService.getInstagramUrl()} medios={medios.comunidad} />
         <CtaBanner gym={gym} reservaUrl={reservaUrl} canal={canal} />
       </main>
       <Footer gym={gym} instagramUrl={contactService.getInstagramUrl()} credito={contactService.getCredito()} />

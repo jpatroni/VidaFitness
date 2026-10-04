@@ -7,19 +7,13 @@ import { asset } from '../../utils/asset.js';
 import { Reveal } from '../Reveal.jsx';
 import './Community.css';
 
-/** Mosaico estilo feed; `pos` = object-position para centrar a la persona en el recorte cuadrado */
-const FOTOS = [
-  { src: asset('img/hero-poster.jpg'), alt: 'Entrenamiento con battle ropes', pos: '30% center' },
-  { src: asset('img/kettlebell.jpg'), alt: 'Swing con kettlebell', pos: '58% center' },
-  { src: asset('img/trineo.jpg'), alt: 'Empuje de trineo con discos', pos: '45% center' },
-  { src: asset('img/trx.jpg'), alt: 'Remo con bandas de suspensión', pos: '50% center' },
-  { src: asset('img/noe.jpg'), alt: 'Profe Noe', pos: 'center 30%' },
-  { src: asset('img/wallball.jpg'), alt: 'Lanzamiento de balón medicinal', pos: '40% center' },
-];
-
 const PILARES = ['Rutinas y tips', 'Novedades y horarios', 'La energía de cada clase'];
 
-export function Community({ gym, instagramUrl }) {
+/**
+ * @param {{ gym, instagramUrl: string, medios?: import('@domain/entities/Medio.js').Medio[] }} props
+ *   medios: mosaico estilo feed (se recortan en cuadrado; `posicion` encuadra a la persona)
+ */
+export function Community({ gym, instagramUrl, medios = [] }) {
   return (
     <section className="section community" id="comunidad" aria-labelledby="community-title">
       <div className="container community__inner">
@@ -56,9 +50,9 @@ export function Community({ gym, instagramUrl }) {
             rel="noopener"
             aria-label={`Ver el Instagram de ${gym.nombre} (@${gym.instagram})`}
           >
-            {FOTOS.map((f) => (
-              <span className="community__tile" key={f.src}>
-                <img src={f.src} alt={f.alt} loading="lazy" style={{ objectPosition: f.pos }} />
+            {medios.map((m) => (
+              <span className="community__tile" key={m.id}>
+                <img src={asset(m.imagen)} alt={m.alt} loading="lazy" style={{ objectPosition: m.posicion }} />
                 <span className="community__tile-overlay" aria-hidden="true">
                   <Icon name="instagram" size={26} />
                 </span>

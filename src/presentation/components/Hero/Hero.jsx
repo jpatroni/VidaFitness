@@ -1,76 +1,66 @@
 /**
- * CAPA DE PRESENTACIÓN · Hero con video de fondo en loop
+ * CAPA DE PRESENTACIÓN · Hero con video real en loop
+ * - Mobile: el video vertical ocupa toda la pantalla.
+ * - Desktop: texto a la izquierda + el video en formato "reel" a la derecha,
+ *   con el mismo video desenfocado de fondo (el original es vertical y de baja
+ *   resolución: estirado a pantalla completa se vería pixelado).
  */
-import { useEffect, useRef } from 'react';
-import { useInView, useReducedMotion } from '../../hooks/dom.js';
 import { Icon } from '../Icon.jsx';
+import { LoopVideo } from '../LoopVideo.jsx';
 import { asset } from '../../utils/asset.js';
 import './Hero.css';
 
-/** Reproduce el video sólo si está en pantalla y no se pidió reducir movimiento */
-function useBackgroundVideo() {
-  const videoRef = useRef(null);
-  const [sectionRef, inView] = useInView();
-  const reduced = useReducedMotion();
-
-  useEffect(() => {
-    const video = videoRef.current;
-    if (!video) return;
-    if (inView && !reduced) video.play().catch(() => {});
-    else video.pause();
-  }, [inView, reduced]);
-
-  return { sectionRef, videoRef, autoPlay: !reduced };
-}
-
-export function Hero({ gym, reservaUrl }) {
-  const { sectionRef, videoRef, autoPlay } = useBackgroundVideo();
-
+/** @param {{ gym, reservaUrl: string, video?: import('@domain/entities/Medio.js').Medio }} props */
+export function Hero({ gym, reservaUrl, video }) {
   return (
-    <section className="hero" id="inicio" aria-label="Presentación" ref={sectionRef}>
-      <div className="hero__media" aria-hidden="true">
-        <video
-          ref={videoRef}
-          className="hero__video"
-          autoPlay={autoPlay}
-          muted
-          loop
-          playsInline
-          preload="auto"
-          poster={asset('img/hero-poster.jpg')}
-        >
-          <source src={asset('media/hero.mp4')} type="video/mp4" />
-        </video>
+    <section className="hero" id="inicio" aria-label="Presentación">
+      <div
+        className="hero__media"
+        aria-hidden="true"
+        style={video ? { backgroundImage: `url(${asset(video.poster)})` } : undefined}
+      >
+        {video && <LoopVideo medio={video} className="hero__video" decorativo />}
         <div className="hero__overlay" />
       </div>
 
       <div className="hero__content container">
-        <p className="hero__badge">
-          <Icon name="pin" size={16} /> {gym.ubicacion}
-          <span className="hero__badge-sep" />
-          Cupos limitados
-        </p>
+        <div className="hero__text">
+          <p className="hero__badge">
+            <Icon name="pin" size={16} /> {gym.ubicacion}
+            <span className="hero__badge-sep" />
+            Cupos limitados
+          </p>
 
-        <h1 className="hero__title">
-          <span className="hero__title-line">Pasión por el</span>
-          <span className="hero__title-line hero__title-line--accent">entrenamiento</span>
-        </h1>
+          <h1 className="hero__title">
+            <span className="hero__title-line">Pasión por el</span>
+            <span className="hero__title-line hero__title-line--accent">entrenamiento</span>
+          </h1>
 
-        <p className="hero__script">{gym.claim}</p>
+          <p className="hero__script">{gym.claim}</p>
 
-        <p className="hero__lead">
-          Funcional, entrenamiento personalizado, running y pilates. Encontrá tu horario y entrená con profes
-          que te acompañan en cada paso.
-        </p>
+          <p className="hero__lead">
+            Funcional, entrenamiento personalizado, running y pilates. Encontrá tu horario y entrená con profes
+            que te acompañan en cada paso.
+          </p>
 
-        <div className="hero__actions">
-          <a className="btn btn--primary" href={reservaUrl} target="_blank" rel="noopener">
-            Reservá tu lugar <Icon name="arrow" size={18} />
-          </a>
-          <a className="btn btn--ghost" href="#horarios">
-            Ver horarios
-          </a>
+          <div className="hero__actions">
+            <a className="btn btn--primary" href={reservaUrl} target="_blank" rel="noopener">
+              Reservá tu lugar <Icon name="arrow" size={18} />
+            </a>
+            <a className="btn btn--ghost" href="#horarios">
+              Ver horarios
+            </a>
+          </div>
         </div>
+
+        {video && (
+          <figure className="hero__reel">
+            <LoopVideo medio={video} className="hero__reel-video" />
+            <figcaption className="hero__reel-tag">
+              <span className="hero__reel-dot" aria-hidden="true" /> Así entrenamos
+            </figcaption>
+          </figure>
+        )}
       </div>
 
       <a className="hero__scroll" href="#disciplinas" aria-label="Bajar a disciplinas">

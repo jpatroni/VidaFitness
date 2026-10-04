@@ -11,7 +11,7 @@
   border-radius: var(--radius-lg);
   background:
     linear-gradient(rgba(10, 10, 10, 0.78), rgba(10, 10, 10, 0.88)),
-    url('/img/hero-poster.jpg') center / cover;
+    url('/img/galeria/clase-grupal.jpg') center 40% / cover;
   border: 1px solid rgba(226, 121, 62, 0.35);
 }
 

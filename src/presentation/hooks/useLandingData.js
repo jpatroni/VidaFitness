@@ -5,6 +5,9 @@
 import { useEffect, useState } from 'react';
 import { useServices } from '../context/ServicesContext.jsx';
 
+/** Colecciones de fotos/videos que usa la página */
+const COLECCIONES_MEDIOS = ['hero', 'beneficios', 'espacio', 'comunidad'];
+
 export function useLandingData() {
   const { catalogService, scheduleService } = useServices();
   const [state, setState] = useState({ status: 'loading', data: null, error: null });
@@ -17,10 +20,11 @@ export function useLandingData() {
       catalogService.getProfesores(),
       catalogService.getProgramasPorProfesor(),
       scheduleService.getGrilla(),
+      catalogService.getMedios(COLECCIONES_MEDIOS),
     ])
-      .then(([programas, profesores, programasPorProfesor, grilla]) => {
+      .then(([programas, profesores, programasPorProfesor, grilla, medios]) => {
         if (!cancelled) {
-          setState({ status: 'ready', data: { programas, profesores, programasPorProfesor, grilla }, error: null });
+          setState({ status: 'ready', data: { programas, profesores, programasPorProfesor, grilla, medios }, error: null });
         }
       })
       .catch((error) => {

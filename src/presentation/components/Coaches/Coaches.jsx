@@ -20,6 +20,22 @@ function TagsDisciplinas({ programas = [] }) {
   );
 }
 
+function Formacion({ items, className = '' }) {
+  if (!items?.length) return null;
+  return (
+    <ul className={`formacion ${className}`.trim()} aria-label="Formación">
+      {items.map((item) => (
+        <li key={item}>
+          <span className="formacion__check" aria-hidden="true">
+            <Icon name="check" size={14} />
+          </span>
+          {item}
+        </li>
+      ))}
+    </ul>
+  );
+}
+
 function Spotlight({ profesor, programas, reservaUrl, canal }) {
   const { trayectoria: t } = profesor;
   const headingId = `spotlight-${profesor.id}`;
@@ -40,7 +56,7 @@ function Spotlight({ profesor, programas, reservaUrl, canal }) {
       </Reveal>
 
       <Reveal className="spotlight__content">
-        <p className="spotlight__eyebrow">Conocé a tu profe</p>
+        <p className="spotlight__eyebrow">Conocenos</p>
         <h3 className="spotlight__name" id={headingId}>
           {profesor.nombreCompleto}
         </h3>
@@ -53,16 +69,8 @@ function Spotlight({ profesor, programas, reservaUrl, canal }) {
           </p>
         ))}
 
-        {t.destacados.length > 0 && (
-          <ul className="spotlight__stats">
-            {t.destacados.map((d) => (
-              <li key={d.label}>
-                <strong>{d.valor}</strong>
-                <span>{d.label}</span>
-              </li>
-            ))}
-          </ul>
-        )}
+        <h4 className="spotlight__subtitle">Formación</h4>
+        <Formacion items={profesor.formacion} className="spotlight__formacion" />
 
         <TagsDisciplinas programas={programas} />
 
@@ -93,6 +101,7 @@ function CoachCard({ profesor, programas, delay }) {
             <li key={r}>{r}</li>
           ))}
         </ul>
+        <Formacion items={profesor.formacion} className="coach-card__formacion" />
         <TagsDisciplinas programas={programas} />
       </div>
     </Reveal>

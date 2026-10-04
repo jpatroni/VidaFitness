@@ -1,0 +1,120 @@
+.gallery {
+  background:
+    radial-gradient(50% 50% at 10% 20%, rgba(226, 121, 62, 0.08), transparent 70%),
+    var(--color-bg);
+}
+
+.gallery__header {
+  display: grid;
+  grid-template-columns: minmax(0, 1.2fr) minmax(0, 0.8fr);
+  gap: 2rem 3rem;
+  align-items: end;
+  margin-bottom: 3rem;
+}
+
+.gallery__quote {
+  margin: 0;
+  padding-left: 1.25rem;
+  border-left: 3px solid var(--color-orange);
+}
+
+.gallery__quote p {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(2rem, 4.2vw, 3.2rem);
+  line-height: 0.95;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+}
+
+.gallery__quote em {
+  font-style: normal;
+  color: var(--color-orange);
+}
+
+.gallery__quote footer {
+  margin-top: 0.5rem;
+  font-family: var(--font-script);
+  font-size: 1.3rem;
+  color: var(--color-text-muted);
+}
+
+/* ---- Tarjetas ---- */
+.gallery__track {
+  list-style: none;
+  margin: 0 auto;
+  padding: 0 var(--gutter);
+  max-width: var(--container);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 1rem;
+}
+
+.gallery__item {
+  position: relative;
+  aspect-ratio: 9 / 15;
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  background: var(--color-surface);
+  border: 1px solid var(--color-border);
+}
+
+.gallery__media,
+.gallery__media video {
+  display: block;
+  width: 100%;
+  height: 100%;
+}
+
+img.gallery__media,
+.gallery__media video {
+  object-fit: cover;
+  transition: transform 0.6s var(--ease-out);
+}
+
+.gallery__item:hover img.gallery__media,
+.gallery__item:hover .gallery__media video {
+  transform: scale(1.04);
+}
+
+.gallery__badge {
+  position: absolute;
+  top: 0.9rem;
+  left: 0.9rem;
+  padding: 0.3rem 0.7rem;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(6px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--color-orange-bright);
+}
+
+/* ---- Mobile / tablet: carrusel deslizable ---- */
+@media (max-width: 860px) {
+  .gallery__header {
+    grid-template-columns: 1fr;
+  }
+
+  .gallery__track {
+    display: flex;
+    gap: 0.75rem;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    scroll-padding-inline: var(--gutter);
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    padding-bottom: 0.5rem;
+  }
+
+  .gallery__track::-webkit-scrollbar {
+    display: none;
+  }
+
+  .gallery__item {
+    flex: 0 0 min(72vw, 300px);
+    scroll-snap-align: start;
+  }
+}

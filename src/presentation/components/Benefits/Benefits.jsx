@@ -6,21 +6,37 @@ import { asset } from '../../utils/asset.js';
 import { Reveal } from '../Reveal.jsx';
 import './Benefits.css';
 
-/** @param {{ programa?: import('@domain/entities/Programa.js').Programa }} props */
-export function Benefits({ programa }) {
+/**
+ * @param {{
+ *   programa?: import('@domain/entities/Programa.js').Programa,
+ *   medios?: import('@domain/entities/Medio.js').Medio[],  [0] principal, [1] chica superpuesta
+ * }} props
+ */
+export function Benefits({ programa, medios = [] }) {
   if (!programa?.tieneBeneficios) return null;
+  const [principal, secundaria] = medios;
 
   return (
     <section className="section benefits" aria-labelledby="benefits-title">
       <div className="container benefits__inner">
         <Reveal as="figure" className="benefits__media">
-          <img src={asset('img/trx.jpg')} alt="Entrenamiento con bandas de suspensión (TRX)" loading="lazy" />
-          <img
-            className="benefits__media-sm"
-            src={asset('img/wallball.jpg')}
-            alt="Lanzamiento de balón medicinal contra la pared"
-            loading="lazy"
-          />
+          {principal && (
+            <img
+              src={asset(principal.imagen)}
+              alt={principal.alt}
+              loading="lazy"
+              style={{ objectPosition: principal.posicion }}
+            />
+          )}
+          {secundaria && (
+            <img
+              className="benefits__media-sm"
+              src={asset(secundaria.imagen)}
+              alt={secundaria.alt}
+              loading="lazy"
+              style={{ objectPosition: secundaria.posicion }}
+            />
+          )}
         </Reveal>
 
         <Reveal className="benefits__content">

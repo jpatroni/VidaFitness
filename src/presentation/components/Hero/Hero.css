@@ -12,13 +12,106 @@
   position: absolute;
   inset: 0;
   z-index: -1;
-  background: #000 url('/img/hero-poster.jpg') center / cover no-repeat;
+  overflow: hidden;
+  /* el poster llega por style inline (respeta la base del sitio) */
+  background-color: #000;
+  background-position: center;
+  background-size: cover;
 }
 
-.hero__video {
+.hero__video,
+.hero__video video {
   width: 100%;
   height: 100%;
+}
+
+.hero__video video {
   object-fit: cover;
+}
+
+/* ---- Desktop: fondo desenfocado + reel nítido a la derecha ---- */
+@media (min-width: 861px) {
+  .hero__media {
+    filter: blur(18px) brightness(0.55) saturate(1.1);
+    transform: scale(1.15);
+  }
+
+  .hero__content {
+    display: grid;
+    grid-template-columns: minmax(0, 1.25fr) minmax(0, 0.75fr);
+    align-items: center;
+    gap: clamp(2rem, 5vw, 5rem);
+  }
+
+  /* El texto comparte el ancho con el reel: "ENTRENAMIENTO" tiene que entrar en su columna */
+  .hero .hero__title {
+    font-size: clamp(3rem, 8.4vw, 7.25rem);
+  }
+}
+
+.hero__reel {
+  position: relative;
+  margin: 0;
+  justify-self: center;
+  width: min(100%, 340px);
+  aspect-ratio: 9 / 16;
+  max-height: calc(100svh - var(--nav-h) - 6rem);
+  border-radius: 28px;
+  overflow: hidden;
+  border: 2px solid rgba(226, 121, 62, 0.55);
+  box-shadow:
+    0 30px 80px -20px rgba(0, 0, 0, 0.9),
+    0 0 60px -10px rgba(226, 121, 62, 0.45);
+  animation: hero-in 0.9s var(--ease-out) 0.35s both;
+}
+
+.hero__reel-video,
+.hero__reel-video video {
+  width: 100%;
+  height: 100%;
+}
+
+.hero__reel-video video {
+  object-fit: cover;
+}
+
+.hero__reel-tag {
+  position: absolute;
+  left: 1rem;
+  bottom: 1rem;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.45rem 0.85rem;
+  border-radius: 999px;
+  background: rgba(10, 10, 10, 0.7);
+  backdrop-filter: blur(8px);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.hero__reel-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--color-ember);
+  box-shadow: 0 0 0 0 rgba(255, 122, 26, 0.7);
+  animation: hero-live 1.8s ease-out infinite;
+}
+
+@keyframes hero-live {
+  70%,
+  100% {
+    box-shadow: 0 0 0 8px rgba(255, 122, 26, 0);
+  }
+}
+
+@media (max-width: 860px) {
+  .hero__reel {
+    display: none;
+  }
 }
 
 /* Oscurece a la izquierda para leer el texto + tinte naranja cálido abajo */
@@ -170,6 +263,8 @@
   .hero__script,
   .hero__lead,
   .hero__actions,
+  .hero__reel,
+  .hero__reel-dot,
   .hero__scroll span {
     animation: none;
   }

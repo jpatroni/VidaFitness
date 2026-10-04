@@ -1,6 +1,6 @@
 # Vida Fitness · Landing page
 
-Landing de **Vida Fitness** (Villa de Mayo): video de fondo en loop, disciplinas, calendario de clases filtrable, profes, comunidad de Instagram y reservas por WhatsApp.
+Landing de **Vida Fitness** (Villa de Mayo): video real de clase en loop, disciplinas, galería del espacio, calendario de clases filtrable, profes, comunidad de Instagram y reservas por WhatsApp.
 
 **Stack:** React 19 · Vite 8 · CSS por componente. Requiere Node `^20.19` o `>=22.12` (ver `.nvmrc`).
 
@@ -30,14 +30,14 @@ src/
 │
 ├── domain/                     ← CAPA DE DOMINIO (no depende de nada)
 │   ├── constants.js               días y turnos
-│   └── entities/                  Clase, Programa, Profesor + sus reglas (turno, horaLabel…)
+│   └── entities/                  Clase, Programa, Profesor, Medio + sus reglas (turno, horaLabel…)
 │
 ├── data/                       ← CAPA DE DATOS (depende de domain)
-│   ├── sources/                   datos crudos: gym, profes, programas, clases
+│   ├── sources/                   datos crudos: gym, profes, programas, clases, medios, crédito
 │   └── repositories/              devuelven entidades del dominio (async)
 │
 ├── application/                ← CAPA DE APLICACIÓN / casos de uso (depende de domain)
-│   ├── CatalogService.js          programas con su profe, equipo
+│   ├── CatalogService.js          programas con su profe, equipo, fotos y videos
 │   ├── ScheduleService.js         grilla semanal turno × día
 │   └── ContactService.js          links de reserva (WhatsApp o DM de Instagram)
 │
@@ -46,15 +46,19 @@ src/
     ├── context/                   ServicesContext: inyecta los servicios (useServices)
     ├── hooks/                     useLandingData, useScrolled, useInView, useReducedMotion…
     ├── components/
-    │   ├── <Seccion>/             Navbar, Hero, Programs, Benefits, Schedule, Coaches,
-    │   │                          Community, CtaBanner, Footer, WhatsAppFab (.jsx + .css)
+    │   ├── <Seccion>/             Navbar, Hero, Programs, Benefits, Gallery, Schedule,
+    │   │                          Coaches, Community, CtaBanner, Footer, WhatsAppFab (.jsx + .css)
     │   ├── Icon.jsx               íconos SVG inline
+    │   ├── LoopVideo.jsx          video en loop sin sonido (sólo se reproduce en pantalla)
     │   └── Reveal.jsx             animación de entrada al hacer scroll
     └── styles/                    tokens.css (paleta, tipografía) y base.css
 
 public/
-├── media/hero.mp4              video del hero (H.264, sin audio, faststart)
-└── img/                        logo, poster y fotos
+├── media/reels/                videos verticales (H.264, sin audio, faststart)
+└── img/
+    ├── galeria/                fotos del espacio y posters de los videos
+    ├── logo.png
+    └── noe.jpg
 ```
 
 ### Regla de dependencias
@@ -87,5 +91,4 @@ presentation ──► application ──► domain ◄── data
 | Cambiar WhatsApp o Instagram | `src/data/sources/gym.data.js` |
 | Cambiar el crédito del pie (Powered by) | `src/data/sources/credito.data.js` |
 | Cambiar colores/tipografías | `src/presentation/styles/tokens.css` |
-| Cambiar el video | `public/media/hero.mp4` (+ `public/img/hero-poster.jpg`) |
-| Cambiar fotos de la comunidad | `FOTOS` en `src/presentation/components/Community/Community.jsx` |
+| Cambiar o sumar fotos/videos | Archivo en `public/img/galeria/` o `public/media/reels/` + entrada en `src/data/sources/medios.data.js` (colecciones `hero`, `beneficios`, `espacio`, `comunidad`) |
