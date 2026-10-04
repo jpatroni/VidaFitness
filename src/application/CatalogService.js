@@ -1,11 +1,22 @@
 /**
  * CAPA DE APLICACIÓN · Catálogo
- * Casos de uso: listar programas (con su profe) y el equipo.
+ * Casos de uso: listar programas (con su profe), el equipo y las fotos/videos.
  */
 export class CatalogService {
-  constructor({ programaRepository, profesorRepository }) {
+  constructor({ programaRepository, profesorRepository, medioRepository }) {
     this.programaRepository = programaRepository;
     this.profesorRepository = profesorRepository;
+    this.medioRepository = medioRepository;
+  }
+
+  /**
+   * Fotos y videos de varias colecciones a la vez.
+   * @param {string[]} colecciones
+   * @returns {Promise<Record<string, import('@domain/entities/Medio.js').Medio[]>>}
+   */
+  async getMedios(colecciones) {
+    const listas = await Promise.all(colecciones.map((c) => this.medioRepository.getColeccion(c)));
+    return Object.fromEntries(colecciones.map((c, i) => [c, listas[i]]));
   }
 
   async getProfesores() {

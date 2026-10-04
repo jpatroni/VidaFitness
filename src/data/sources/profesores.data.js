@@ -9,24 +9,28 @@ export const profesoresData = [
     nombre: 'Noe',
     nombreCompleto: 'Noelia',
     roles: ['Profesora Universitaria de Educación Física', 'Personal Trainer'],
+    formacion: [
+      'Profesora Universitaria de Educación Física',
+      'Personal Trainer',
+      'Instructora de Entrenamiento Funcional',
+      'Instructora de Pilates Mat y Esferodinamia',
+      'Estudiante de Kinesiología',
+    ],
     foto: 'img/noe.jpg', // ruta relativa a /public
     trayectoria: {
-      titulo: 'Formación profesional al servicio de tu entrenamiento',
+      titulo: 'Vida Fitness nació de una idea: ayudarte a sentirte mejor a través del movimiento.',
       parrafos: [
-        'Noelia es Profesora Universitaria de Educación Física y Personal Trainer. Su formación académica es la base de cada clase: entiende cómo se mueve el cuerpo, cómo progresar de forma segura y cómo adaptar cada ejercicio a la persona que lo hace.',
-        'En Vida Fitness está a cargo del Entrenamiento Funcional y del Entrenamiento Personalizado, en modalidad presencial o virtual. Arma rutinas a medida de tus objetivos, tu nivel y tus tiempos, y te acompaña en cada etapa del proceso.',
+        'Soy Noelia, Profesora Universitaria de Educación Física y Personal Trainer, y estoy detrás de Vida Fitness.',
+        'Este proyecto nació con el objetivo de crear un espacio donde cada persona pueda entrenar de acuerdo con sus objetivos, su nivel y sus posibilidades, sintiéndose acompañada durante todo el proceso.',
+        'Planifico y superviso cada entrenamiento para que puedas progresar de manera segura, desafiarte y disfrutar de cada paso.',
       ],
-      destacados: [
-        { valor: 'Prof.', label: 'Universitaria de Educación Física' },
-        { valor: 'PT', label: 'Personal Trainer' },
-        { valor: '1 a 1', label: 'Rutinas presenciales o virtuales' },
-      ],
-      cita: 'Un día a la vez, siempre hacia adelante.',
+      cita: 'Porque para mí, entrenar no se trata de compararte con los demás. Se trata de superarte a vos misma, un día a la vez.',
     },
   },
   {
     id: 'tobi',
     nombre: 'Tobi',
-    roles: ['Personal Trainer', 'Profe de Running'],
+    roles: ['Preparador Físico', 'Personal Trainer', 'Profe de Running'],
+    formacion: ['Estudiante del Profesorado de Educación Física', 'Estudiante de Kinesiología'],
   },
 ];

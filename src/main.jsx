@@ -14,6 +14,7 @@ import {
   StaticClaseRepository,
   StaticCreditoRepository,
   StaticGymRepository,
+  StaticMedioRepository,
   StaticProfesorRepository,
   StaticProgramaRepository,
 } from '@data/repositories/StaticRepositories.js';
@@ -26,9 +27,10 @@ const creditoRepository = new StaticCreditoRepository();
 const profesorRepository = new StaticProfesorRepository();
 const programaRepository = new StaticProgramaRepository();
 const claseRepository = new StaticClaseRepository();
+const medioRepository = new StaticMedioRepository();
 
 // --- Capa de aplicación ---
-const catalogService = new CatalogService({ programaRepository, profesorRepository });
+const catalogService = new CatalogService({ programaRepository, profesorRepository, medioRepository });
 const scheduleService = new ScheduleService({ claseRepository, programaRepository, profesorRepository });
 
 // --- Capa de presentación ---
