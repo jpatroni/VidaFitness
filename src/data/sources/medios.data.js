@@ -28,14 +28,14 @@ export const mediosData = {
     reel('movilidad', 'Ejercicios de movilidad y elongación'),
     foto('clase-grupal', 'Clase grupal de entrenamiento funcional', 'center'),
     foto('espacio', 'El espacio de entrenamiento preparado para la clase', 'center'),
-    foto('espacio-estructura', 'Estructura de entrenamiento con TRX y balones medicinales', 'center 70%'),
+    { id: 'noe', tipo: 'foto', src: 'img/noe.jpg', alt: 'Profe Noe', posicion: 'center 35%' },
   ],
 
   /** Mosaico de la sección "Comunidad" (estilo feed de Instagram) */
   comunidad: [
     foto('posteo-movimiento', 'Posteo: Cuerpo, mente y energía. Los tres necesitan movimiento', 'center 40%'),
     foto('remera-one-more-rep', 'Remera Vida Fitness "One more rep"', 'center 35%'),
-    { id: 'noe', tipo: 'foto', src: 'img/noe.jpg', alt: 'Profe Noe', posicion: 'center 30%' },
+    foto('espacio-estructura', 'Estructura de entrenamiento con TRX y balones medicinales', 'center 65%'),
     { id: 'reel-kettlebell-poster', tipo: 'foto', src: 'img/galeria/reel-kettlebell.jpg', alt: 'Clase funcional con kettlebell', posicion: 'center 40%' },
     { id: 'reel-movilidad-poster', tipo: 'foto', src: 'img/galeria/reel-movilidad.jpg', alt: 'Movilidad sobre colchoneta', posicion: 'center 45%' },
     foto('clase-grupal', 'Clase grupal en el espacio de Vida Fitness', 'center 55%'),
