@@ -30,7 +30,9 @@ export const profesoresData = [
   {
     id: 'tobi',
     nombre: 'Tobi',
-    roles: ['Preparador Físico', 'Personal Trainer', 'Profe de Running'],
+    roles: ['Profe de Running', 'Preparador Físico', 'Personal Trainer'],
+    especialidad: 'Profe de Running',
     formacion: ['Estudiante del Profesorado de Educación Física', 'Estudiante de Kinesiología'],
+    foto: 'img/tobi.jpg', // ruta relativa a /public
   },
 ];

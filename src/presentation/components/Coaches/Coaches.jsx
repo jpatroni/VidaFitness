@@ -84,25 +84,46 @@ function Spotlight({ profesor, programas, reservaUrl, canal }) {
   );
 }
 
-function CoachCard({ profesor, programas, delay }) {
+function CoachCard({ profesor, programas, reservaUrl, canal, delay }) {
+  const conFoto = Boolean(profesor.foto);
+
   return (
-    <Reveal as="li" className="coach-card" delay={delay}>
-      {profesor.foto ? (
-        <img className="coach-card__avatar coach-card__avatar--photo" src={asset(profesor.foto)} alt="" loading="lazy" />
+    <Reveal as="li" className={`coach-card ${conFoto ? 'coach-card--foto' : ''}`.trim()} delay={delay}>
+      {conFoto ? (
+        <figure className="coach-card__media">
+          <img
+            src={asset(profesor.foto)}
+            alt={`${profesor.titulo}, ${profesor.roles.join(', ')}`}
+            width="600"
+            height="800"
+            loading="lazy"
+          />
+          {profesor.especialidad && (
+            <figcaption className="coach-card__badge">
+              <Icon name="run" size={18} /> {profesor.especialidad}
+            </figcaption>
+          )}
+        </figure>
       ) : (
         <div className="coach-card__avatar" aria-hidden="true">
           {profesor.nombre.charAt(0)}
         </div>
       )}
-      <div>
+      <div className="coach-card__body">
         <h3 className="coach-card__name">{profesor.titulo}</h3>
         <ul className="coach-card__roles">
           {profesor.roles.map((r) => (
             <li key={r}>{r}</li>
           ))}
         </ul>
+        {profesor.formacion.length > 0 && <h4 className="spotlight__subtitle">Formación</h4>}
         <Formacion items={profesor.formacion} className="coach-card__formacion" />
         <TagsDisciplinas programas={programas} />
+        {reservaUrl && (
+          <a className="btn btn--ghost coach-card__btn" href={reservaUrl} target="_blank" rel="noopener">
+            <Icon name={canal} size={18} /> Entrená con {profesor.titulo}
+          </a>
+        )}
       </div>
     </Reveal>
   );
@@ -147,6 +168,8 @@ export function Coaches({ profesores, programasPorProfesor, reservaUrlPorProfeso
                 key={profesor.id}
                 profesor={profesor}
                 programas={programasPorProfesor[profesor.id]}
+                reservaUrl={reservaUrlPorProfesor[profesor.id]}
+                canal={canal}
                 delay={i * 100}
               />
             ))}
