@@ -20,5 +20,6 @@ npm-debug.log*
 .DS_Store
 Thumbs.db
 
-# Material fuente pesado (la web usa la versión optimizada en public/media)
-/gemini_generated_video_*.mp4
+# Material fuente sin optimizar dejado en la raíz (la web usa las versiones de public/)
+/*.mp4
+/*.mov
