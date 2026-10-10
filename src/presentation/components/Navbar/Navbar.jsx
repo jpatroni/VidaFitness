@@ -34,7 +34,7 @@ export function Navbar({ gym, reservaUrl }) {
     <header className={className}>
       <nav className="navbar__inner container" aria-label="Principal">
         <a className="navbar__brand" href="#inicio" aria-label={`${gym.nombre} – inicio`}>
-          <img src={asset('img/logo.png')} alt={gym.nombre} width="132" height="80" />
+          <img src={asset(gym.marca.logoHorizontal)} alt={gym.nombre} width="720" height="139" />
         </a>
 
         <ul className="navbar__links" id="navbar-menu">

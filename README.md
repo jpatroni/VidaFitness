@@ -20,7 +20,7 @@ compila con `npm run build` y sube `dist/`.
 
 - Sitio: https://jpatroni.github.io/VidaFitness/
 - El sitio vive en la subcarpeta `/VidaFitness/` (`base` en `vite.config.js`). Para otro hosting en la raíz, compilar con `BASE_PATH=/ npm run build`.
-- Las rutas a archivos de `public/` desde JSX usan `asset('img/...')` (`presentation/utils/asset.js`) para respetar esa base.
+- Las rutas a archivos de `public/` desde JSX usan `asset('multimedia/...')` (`presentation/utils/asset.js`) para respetar esa base.
 
 ## Arquitectura en capas
 
@@ -50,15 +50,17 @@ src/
     │   │                          Coaches, Community, CtaBanner, Footer, WhatsAppFab (.jsx + .css)
     │   ├── Icon.jsx               íconos SVG inline
     │   ├── LoopVideo.jsx          video en loop sin sonido (sólo se reproduce en pantalla)
+    │   ├── Pinceladas/            trazos diagonales de la marca para decorar secciones
     │   └── Reveal.jsx             animación de entrada al hacer scroll
-    └── styles/                    tokens.css (paleta, tipografía) y base.css
+    └── styles/                    tokens.css (paleta, degradé y tipografía de la marca) y base.css
 
 public/
-├── media/reels/                videos verticales (H.264, sin audio, faststart)
-└── img/
-    ├── galeria/                fotos del espacio y posters de los videos
-    ├── logo.png
-    └── noe.jpg
+└── multimedia/                 ← todo el contenido visual de la página
+    ├── marca/                     logo horizontal y vertical, isotipo, favicon, pinceladas
+    ├── fotos/
+    │   ├── profes/                fotos de los profes
+    │   └── galeria/               fotos del espacio y de las clases
+    └── videos/                    videos verticales (H.264, sin audio) + su <nombre>-poster.jpg
 ```
 
 ### Regla de dependencias
@@ -89,6 +91,7 @@ presentation ──► application ──► domain ◄── data
 | Agregar/editar disciplina | `src/data/sources/programas.data.js` (+ color en `styles/tokens.css` → `--prog-<id>`) |
 | Cambiar profes / trayectoria | `src/data/sources/profesores.data.js` (con `trayectoria` el profe sale destacado) |
 | Cambiar WhatsApp o Instagram | `src/data/sources/gym.data.js` |
+| Cambiar el logo | Reemplazar los archivos de `public/multimedia/marca/` (o las rutas en `marca` de `gym.data.js`) |
 | Cambiar el crédito del pie (Powered by) | `src/data/sources/credito.data.js` |
-| Cambiar colores/tipografías | `src/presentation/styles/tokens.css` |
-| Cambiar o sumar fotos/videos | Archivo en `public/img/galeria/` o `public/media/reels/` + entrada en `src/data/sources/medios.data.js` (colecciones `hero`, `beneficios`, `espacio`, `comunidad`) |
+| Cambiar colores/tipografías | `src/presentation/styles/tokens.css` (`--color-orange`, `--gradient-brand`, `--font-display`…) |
+| Cambiar o sumar fotos/videos | Archivo en `public/multimedia/fotos/galeria/` o `public/multimedia/videos/` + entrada en `src/data/sources/medios.data.js` (colecciones `hero`, `beneficios`, `espacio`, `comunidad`) |

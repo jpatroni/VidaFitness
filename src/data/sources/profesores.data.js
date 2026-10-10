@@ -16,7 +16,7 @@ export const profesoresData = [
       'Instructora de Pilates Mat y Esferodinamia',
       'Estudiante de Kinesiología',
     ],
-    foto: 'img/noe.jpg', // ruta relativa a /public
+    foto: 'multimedia/fotos/profes/noe.jpg', // ruta relativa a /public
     trayectoria: {
       titulo: 'Vida Fitness nació de una idea: ayudarte a sentirte mejor a través del movimiento.',
       parrafos: [
@@ -33,6 +33,6 @@ export const profesoresData = [
     roles: ['Profe de Running', 'Preparador Físico', 'Personal Trainer'],
     especialidad: 'Profe de Running',
     formacion: ['Estudiante del Profesorado de Educación Física', 'Estudiante de Kinesiología'],
-    foto: 'img/tobi.jpg', // ruta relativa a /public
+    foto: 'multimedia/fotos/profes/tobi.jpg', // ruta relativa a /public
   },
 ];

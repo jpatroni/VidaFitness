@@ -12,7 +12,9 @@ html {
 
 body {
   margin: 0;
-  background: var(--color-bg);
+  /* negro con grano sutil, como el fondo del logo */
+  background-color: var(--color-bg);
+  background-image: url("data:image/svg+xml,%3Csvg xmlns=%27http://www.w3.org/2000/svg%27 width=%27160%27 height=%27160%27%3E%3Cfilter id=%27n%27%3E%3CfeTurbulence type=%27fractalNoise%27 baseFrequency=%270.9%27 numOctaves=%272%27 stitchTiles=%27stitch%27/%3E%3CfeColorMatrix values=%270 0 0 0 1 0 0 0 0 1 0 0 0 0 1 0 0 0 0.05 0%27/%3E%3C/filter%3E%3Crect width=%27100%25%27 height=%27100%25%27 filter=%27url(%23n)%27/%3E%3C/svg%3E");
   color: var(--color-text);
   font-family: var(--font-body);
   font-size: 1rem;
@@ -60,25 +62,44 @@ button {
 }
 
 .section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
   font-family: var(--font-script);
-  color: var(--color-orange);
+  color: var(--color-orange-bright);
   font-size: clamp(1.15rem, 2.4vw, 1.5rem);
-  margin: 0 0 0.25rem;
+  margin: 0 0 0.35rem;
+}
+
+/* Línea naranja + gris, como la que acompaña a "Un día a la vez." en el logo */
+.section__eyebrow::before {
+  content: '';
+  flex: none;
+  width: 44px;
+  height: 3px;
+  border-radius: 2px;
+  background: linear-gradient(90deg, var(--color-orange) 0 60%, var(--color-steel) 60% 100%);
 }
 
 .section__title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(2.6rem, 6vw, 4.5rem);
-  line-height: 0.95;
-  letter-spacing: 0.02em;
+  font-style: italic;
+  font-weight: var(--display-weight);
+  font-size: clamp(1.85rem, 4.4vw, 3.1rem);
+  line-height: 1.05;
+  letter-spacing: var(--display-tracking);
   margin: 0 0 1rem;
   text-transform: uppercase;
 }
 
 .section__title em {
-  font-style: normal;
-  color: var(--color-orange);
+  font-style: inherit;
+  background: var(--gradient-brand);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* evita que la itálica recorte el degradé en el borde derecho */
+  padding-right: 0.08em;
 }
 
 .section__lead {
@@ -114,7 +135,7 @@ button {
 
 .btn--primary:hover {
   transform: translateY(-2px);
-  box-shadow: 0 16px 50px -10px rgba(245, 154, 74, 0.7);
+  box-shadow: 0 16px 50px -10px rgba(255, 154, 26, 0.7);
 }
 
 .btn--ghost {

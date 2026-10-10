@@ -32,11 +32,15 @@
 }
 
 .navbar__brand img {
-  height: 46px;
+  /* logo con fondo transparente */
+  height: 44px;
   width: auto;
-  /* el logo tiene fondo negro: "screen" lo funde con el video/fondo */
-  mix-blend-mode: screen;
-  filter: contrast(1.35);
+}
+
+@media (max-width: 400px) {
+  .navbar__brand img {
+    height: 32px;
+  }
 }
 
 .navbar__links {
@@ -123,9 +127,11 @@
 
   .navbar__links a {
     font-family: var(--font-display);
-    font-size: 2.2rem;
-    letter-spacing: 0.06em;
-    font-weight: 400;
+    text-transform: uppercase;
+    font-style: italic;
+    font-size: 1.5rem;
+    letter-spacing: var(--display-tracking);
+    font-weight: var(--display-weight);
     color: var(--color-text);
   }
 

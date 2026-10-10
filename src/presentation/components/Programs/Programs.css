@@ -1,6 +1,6 @@
 .programs {
   background:
-    radial-gradient(60% 50% at 100% 0%, rgba(226, 121, 62, 0.1), transparent 70%),
+    radial-gradient(60% 50% at 100% 0%, rgba(255, 109, 0, 0.1), transparent 70%),
     var(--color-bg);
 }
 
@@ -67,10 +67,12 @@
 
 .program-card__title {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 2rem;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: var(--display-weight);
+  font-size: 1.3rem;
   line-height: 1;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--display-tracking);
   margin: 0.4rem 0 0.8rem;
 }
 

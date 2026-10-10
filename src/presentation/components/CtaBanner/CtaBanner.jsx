@@ -2,6 +2,7 @@
  * CAPA DE PRESENTACIÓN · Banner de llamada a la acción
  */
 import { Icon } from '../Icon.jsx';
+import { Pinceladas } from '../Pinceladas/Pinceladas.jsx';
 import { Reveal } from '../Reveal.jsx';
 import './CtaBanner.css';
 
@@ -10,6 +11,7 @@ export function CtaBanner({ gym, reservaUrl, canal }) {
     <section className="cta" id="contacto">
       <div className="container">
         <Reveal className="cta__box">
+          <Pinceladas />
           <p className="cta__script">{gym.lema}</p>
           <h2 className="cta__title">
             Consultá disponibilidad · <em>cupos limitados</em>

@@ -7,6 +7,7 @@
  */
 import { Icon } from '../Icon.jsx';
 import { LoopVideo } from '../LoopVideo.jsx';
+import { Pinceladas } from '../Pinceladas/Pinceladas.jsx';
 import { asset } from '../../utils/asset.js';
 import './Hero.css';
 
@@ -22,6 +23,7 @@ export function Hero({ gym, reservaUrl, video }) {
         {video && <LoopVideo medio={video} className="hero__video" decorativo />}
         <div className="hero__overlay" />
       </div>
+      <Pinceladas />
 
       <div className="hero__content container">
         <div className="hero__text">
@@ -31,16 +33,23 @@ export function Hero({ gym, reservaUrl, video }) {
             Cupos limitados
           </p>
 
-          <h1 className="hero__title">
-            <span className="hero__title-line">Pasión por el</span>
-            <span className="hero__title-line hero__title-line--accent">entrenamiento</span>
+          <h1 className="hero__logo">
+            <img
+              src={asset(gym.marca.logoVertical)}
+              alt={`${gym.nombre} — ${gym.tagline}`}
+              width="820"
+              height="329"
+              fetchPriority="high"
+            />
           </h1>
 
-          <p className="hero__script">{gym.claim}</p>
+          <p className="hero__title">
+            Pasión por el <em>entrenamiento</em>
+          </p>
 
           <p className="hero__lead">
-            Funcional, entrenamiento personalizado, running y pilates. Encontrá tu horario y entrená con profes
-            que te acompañan en cada paso.
+            {gym.claim}. Funcional, entrenamiento personalizado, running y pilates con profes que te acompañan
+            en cada paso.
           </p>
 
           <div className="hero__actions">

@@ -1,29 +1,37 @@
-/* Paleta y tipografía tomadas del logo y las piezas de Instagram:
-   negro profundo + naranja "Vida" + acentos cálidos tipo brasa. */
+/* Identidad visual 2026: negro texturado + naranja intenso con degradé (como "FITNESS"
+   en el logo), acentos grises de las pinceladas y tipografía gruesa e itálica. */
 :root {
   --color-bg: #0a0a0a;
-  --color-bg-warm: #140d09;
-  --color-surface: #161412;
-  --color-surface-2: #1f1b18;
+  --color-bg-warm: #120c08;
+  --color-surface: #151413;
+  --color-surface-2: #1e1b19;
   --color-border: rgba(255, 255, 255, 0.08);
 
-  --color-orange: #e2793e;
-  --color-orange-bright: #f59a4a;
-  --color-orange-deep: #b8551f;
-  --color-ember: #ff7a1a;
-  --color-orange-soft: rgba(226, 121, 62, 0.14);
+  --color-orange: #ff6d00;
+  --color-orange-bright: #ff9a1a;
+  --color-orange-deep: #e04800;
+  --color-ember: #ff7a00;
+  --color-orange-soft: rgba(255, 109, 0, 0.14);
+  --color-steel: #8e8e8e;
 
-  --color-text: #f5f1ec;
-  --color-text-muted: #b5aca3;
-  --color-text-dim: #7d756e;
+  /* Degradé de "FITNESS" en el logo: de naranja claro arriba a naranja quemado abajo */
+  --gradient-brand: linear-gradient(180deg, #ffa31a 0%, #ff6d00 55%, #ee4b00 100%);
+  --gradient-brand-diagonal: linear-gradient(135deg, #ff9a1a 0%, #ff6d00 50%, #e04800 100%);
+
+  --color-text: #f7f4f1;
+  --color-text-muted: #b8b0a9;
+  --color-text-dim: #807872;
 
   /* Colores por disciplina (calendario) */
-  --prog-funcional: #e2793e;
-  --prog-personalizado: #f2b04a;
+  --prog-funcional: #ff6d00;
+  --prog-personalizado: #ffb020;
   --prog-running: #7fa7d9;
   --prog-pilates: #9fc6b8;
 
-  --font-display: 'Bebas Neue', 'Oswald', Impact, sans-serif;
+  /* Títulos: misma familia del logo, muy gruesa e itálica */
+  --font-display: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
+  --display-weight: 900;
+  --display-tracking: -0.015em;
   --font-script: 'Kaushan Script', cursive;
   --font-body: 'Montserrat', system-ui, -apple-system, 'Segoe UI', sans-serif;
 
@@ -36,6 +44,6 @@
   --section-y: clamp(72px, 10vw, 128px);
   --nav-h: 72px;
 
-  --shadow-glow: 0 10px 40px -10px rgba(226, 121, 62, 0.55);
+  --shadow-glow: 0 10px 40px -10px rgba(255, 109, 0, 0.55);
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
 }

@@ -75,10 +75,11 @@
 
 .spotlight__name {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: clamp(3.4rem, 8vw, 6rem);
+  font-style: italic;
+  font-weight: var(--display-weight);
+  font-size: clamp(2.4rem, 5.6vw, 4rem);
   line-height: 0.9;
-  letter-spacing: 0.02em;
+  letter-spacing: var(--display-tracking);
   text-transform: uppercase;
   margin: 0.2rem 0 0.5rem;
 }
@@ -179,7 +180,8 @@
   }
 
   .spotlight__media {
-    max-width: 420px;
+    /* ancho explícito: con margin auto + img al 100% el ancho colapsaba a 0 */
+    width: min(calc(100% - 1.25rem), 420px);
     margin-inline: auto 1.25rem;
   }
 }
@@ -223,7 +225,10 @@
   height: 84px;
   border-radius: 50%;
   font-family: var(--font-display);
-  font-size: 2.8rem;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: var(--display-weight);
+  font-size: 2.2rem;
   color: #fff;
   background: linear-gradient(135deg, var(--color-orange-bright), var(--color-orange-deep));
   box-shadow: var(--shadow-glow);
@@ -272,7 +277,7 @@
 }
 
 .coach-card--foto .coach-card__name {
-  font-size: clamp(2.2rem, 4vw, 3rem);
+  font-size: clamp(1.6rem, 2.8vw, 2.2rem);
 }
 
 .coach-card__body .spotlight__subtitle {
@@ -299,10 +304,12 @@
 
 .coach-card__name {
   font-family: var(--font-display);
-  font-weight: 400;
-  font-size: 2.2rem;
+  text-transform: uppercase;
+  font-style: italic;
+  font-weight: var(--display-weight);
+  font-size: 1.55rem;
   line-height: 1;
-  letter-spacing: 0.03em;
+  letter-spacing: var(--display-tracking);
   margin: 0 0 0.6rem;
 }
 

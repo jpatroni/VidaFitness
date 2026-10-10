@@ -2,14 +2,15 @@
  * CAPA DE DATOS · Fuente estática
  * Fotos y videos reales del gimnasio, agrupados por colección (dónde se muestran).
  * Rutas relativas a /public. Para sumar contenido: copiar el archivo a
- * public/img/galeria o public/media/reels y agregar una entrada acá.
+ * public/multimedia/fotos/galeria o public/multimedia/videos (con su -poster.jpg)
+ * y agregar una entrada acá.
  */
-const foto = (id, alt, posicion) => ({ id, tipo: 'foto', src: `img/galeria/${id}.jpg`, alt, posicion });
+const foto = (id, alt, posicion) => ({ id, tipo: 'foto', src: `multimedia/fotos/galeria/${id}.jpg`, alt, posicion });
 const reel = (id, alt) => ({
   id: `reel-${id}`,
   tipo: 'video',
-  src: `media/reels/${id}.mp4`,
-  poster: `img/galeria/reel-${id}.jpg`,
+  src: `multimedia/videos/${id}.mp4`,
+  poster: `multimedia/videos/${id}-poster.jpg`,
   alt,
 });
 
@@ -28,7 +29,7 @@ export const mediosData = {
     reel('movilidad', 'Ejercicios de movilidad y elongación'),
     foto('clase-grupal', 'Clase grupal de entrenamiento funcional', 'center'),
     foto('espacio', 'El espacio de entrenamiento preparado para la clase', 'center'),
-    { id: 'noe', tipo: 'foto', src: 'img/noe.jpg', alt: 'Profe Noe', posicion: 'center 35%' },
+    { id: 'noe', tipo: 'foto', src: 'multimedia/fotos/profes/noe.jpg', alt: 'Profe Noe', posicion: 'center 35%' },
   ],
 
   /** Mosaico de la sección "Comunidad" (estilo feed de Instagram) */
@@ -36,8 +37,8 @@ export const mediosData = {
     foto('posteo-movimiento', 'Posteo: Cuerpo, mente y energía. Los tres necesitan movimiento', 'center 40%'),
     foto('remera-one-more-rep', 'Remera Vida Fitness "One more rep"', 'center 35%'),
     foto('espacio-estructura', 'Estructura de entrenamiento con TRX y balones medicinales', 'center 65%'),
-    { id: 'reel-kettlebell-poster', tipo: 'foto', src: 'img/galeria/reel-kettlebell.jpg', alt: 'Clase funcional con kettlebell', posicion: 'center 40%' },
-    { id: 'reel-movilidad-poster', tipo: 'foto', src: 'img/galeria/reel-movilidad.jpg', alt: 'Movilidad sobre colchoneta', posicion: 'center 45%' },
+    { id: 'reel-kettlebell-poster', tipo: 'foto', src: 'multimedia/videos/kettlebell-poster.jpg', alt: 'Clase funcional con kettlebell', posicion: 'center 40%' },
+    { id: 'reel-movilidad-poster', tipo: 'foto', src: 'multimedia/videos/movilidad-poster.jpg', alt: 'Movilidad sobre colchoneta', posicion: 'center 45%' },
     foto('clase-grupal', 'Clase grupal en el espacio de Vida Fitness', 'center 55%'),
   ],
 };

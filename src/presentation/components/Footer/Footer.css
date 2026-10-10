@@ -14,10 +14,8 @@
 }
 
 .footer__logo {
-  height: 72px;
-  width: auto;
-  mix-blend-mode: screen;
-  filter: contrast(1.35);
+  width: min(240px, 70vw);
+  height: auto;
 }
 
 .footer__info {

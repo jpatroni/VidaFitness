@@ -12,7 +12,14 @@ export function Footer({ gym, instagramUrl, credito }) {
   return (
     <footer className="footer">
       <div className="container footer__inner">
-        <img className="footer__logo" src={asset('img/logo.png')} alt={gym.nombre} width="160" height="97" loading="lazy" />
+        <img
+          className="footer__logo"
+          src={asset(gym.marca.logoVertical)}
+          alt={`${gym.nombre} — ${gym.tagline}`}
+          width="820"
+          height="329"
+          loading="lazy"
+        />
 
         <div className="footer__info">
           <p>

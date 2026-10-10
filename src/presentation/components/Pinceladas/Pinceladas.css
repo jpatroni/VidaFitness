@@ -1,0 +1,40 @@
+/* span.pinceladas: más específico que reglas tipo ".contenedor > *" que fuerzan position: relative */
+span.pinceladas {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  pointer-events: none;
+  z-index: 0;
+  border-radius: inherit;
+}
+
+.pinceladas__trazo {
+  position: absolute;
+  width: clamp(120px, 22vw, 300px);
+  background-repeat: no-repeat;
+  background-size: contain;
+  opacity: 0.95;
+}
+
+.pinceladas__trazo--sup {
+  top: 0;
+  left: 0;
+  aspect-ratio: 430 / 395;
+  background-image: url('/multimedia/marca/pincelada-sup.png');
+  background-position: top left;
+}
+
+.pinceladas__trazo--inf {
+  right: 0;
+  bottom: 0;
+  aspect-ratio: 404 / 394;
+  background-image: url('/multimedia/marca/pincelada-inf.png');
+  background-position: bottom right;
+}
+
+@media (max-width: 640px) {
+  .pinceladas__trazo {
+    width: 110px;
+    opacity: 0.8;
+  }
+}
